@@ -5,9 +5,12 @@ var express = require('express'),
     engines = require('consolidate'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
+    
+    
   //  url = 'mongodb://localhost:27017/simplemean';
    url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/?ssl=true&replicaSet=globaldb/simplemean';   
-app.use(express.static(__dirname + "/public"));
+console.log('Trying to connect DB');
+    app.use(express.static(__dirname + "/public"));
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -24,7 +27,7 @@ function errorHandler(err, req, res, next) {
 
 MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
     assert.equal(null, err);
-    console.log('Successfully connected to MongoDB.');
+   console.log('Successfully connected to MongoDB.');
 
     var records_collection = db.collection('records');
 
