@@ -79,7 +79,7 @@ MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
     });
 
     app.use(errorHandler);
-    var server = app.listen(process.env.PORT || 80, function() {
+    var server = app.listen(process.env.PORT || 3000, function() {
         var port = server.address().port;
         console.log('Express server listening on port %s.', port);
     })
