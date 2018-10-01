@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/chhunchha/simplemeanapp#readme",
   "dependencies": {
+    "applicationinsights": "^1.0.5",
     "assert": "^1.4.1",
     "body-parser": "^1.15.1",
     "consolidate": "^0.14.1",
