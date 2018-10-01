@@ -8,7 +8,7 @@ var express = require('express'),
     
     
    // url = 'mongodb://localhost:27017/simplemean';
-  url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/?ssl=true&replicaSet=globaldb/simplemean';   
+url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/?ssl=true&replicaSet=globaldb/simplemean';   
 console.log('Trying to connect DB');
     app.use(express.static(__dirname + "/public"));
 
