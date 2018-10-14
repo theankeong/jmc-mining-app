@@ -1,0 +1,339 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "databaseAccounts_myc4ts_name": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualNetworks_myc4ts_name": {
+            "defaultValue": "myc4ts",
+            "type": "String"
+        },
+        "databaseAccounts_myc4ts_name_1": {
+            "defaultValue": "myc4ts",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_name": {
+            "defaultValue": "myc4ts-appgw",
+            "type": "String"
+        },
+        "publicIPAddresses_myc4ts_appgw_ip_name": {
+            "defaultValue": "myc4ts-appgw-ip",
+            "type": "String"
+        },
+        "subnets_default_name": {
+            "defaultValue": "default",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/probes/probe",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id_1": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/frontendIPConfigurations/appGatewayFrontendIP",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id_2": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/frontendPorts/appGatewayFrontendPort",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id_3": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/httpListeners/appGatewayHttpListener",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id_4": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/backendAddressPools/appGatewayBackendPool",
+            "type": "String"
+        },
+        "applicationGateways_myc4ts_appgw_id_5": {
+            "defaultValue": "/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw/backendHttpSettingsCollection/appGatewayBackendHttpSettings",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.DocumentDB/databaseAccounts/myc4ts'.",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "kind": "MongoDB",
+            "name": "[parameters('databaseAccounts_myc4ts_name_1')]",
+            "apiVersion": "2015-04-08",
+            "location": "Southeast Asia",
+            "tags": {
+                "defaultExperience": "MongoDB"
+            },
+            "scale": null,
+            "properties": {
+                "databaseAccountOfferType": "Standard",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "name": "[parameters('databaseAccounts_myc4ts_name')]"
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/applicationGateways/myc4ts-appgw'.",
+            "type": "Microsoft.Network/applicationGateways",
+            "name": "[parameters('applicationGateways_myc4ts_appgw_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "southeastasia",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "5b306d08-7d7e-475c-a60d-4a3071c7f35d",
+                "sku": {
+                    "name": "WAF_Medium",
+                    "tier": "WAF",
+                    "capacity": 1
+                },
+                "gatewayIPConfigurations": [
+                    {
+                        "name": "appGatewayIpConfig",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "subnet": {
+                                "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_myc4ts_name'), parameters('subnets_default_name'))]"
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/gatewayIPConfigurations"
+                    }
+                ],
+                "sslCertificates": [],
+                "authenticationCertificates": [],
+                "frontendIPConfigurations": [
+                    {
+                        "name": "appGatewayFrontendIP",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "type": "Microsoft.Network/applicationGateways/frontendIPConfigurations",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_myc4ts_appgw_ip_name'))]"
+                            }
+                        }
+                    }
+                ],
+                "frontendPorts": [
+                    {
+                        "name": "appGatewayFrontendPort",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "port": 80
+                        },
+                        "type": "Microsoft.Network/applicationGateways/frontendPorts"
+                    }
+                ],
+                "backendAddressPools": [
+                    {
+                        "name": "appGatewayBackendPool",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "backendAddresses": [
+                                {
+                                    "fqdn": "myc4ts.azurewebsites.net"
+                                }
+                            ]
+                        },
+                        "type": "Microsoft.Network/applicationGateways/backendAddressPools"
+                    }
+                ],
+                "backendHttpSettingsCollection": [
+                    {
+                        "name": "appGatewayBackendHttpSettings",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "port": 80,
+                            "protocol": "Http",
+                            "cookieBasedAffinity": "Disabled",
+                            "pickHostNameFromBackendAddress": true,
+                            "path": null,
+                            "requestTimeout": 30,
+                            "probe": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id')]"
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/backendHttpSettingsCollection"
+                    }
+                ],
+                "httpListeners": [
+                    {
+                        "name": "appGatewayHttpListener",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "frontendIPConfiguration": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id_1')]"
+                            },
+                            "frontendPort": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id_2')]"
+                            },
+                            "protocol": "Http",
+                            "requireServerNameIndication": false
+                        },
+                        "type": "Microsoft.Network/applicationGateways/httpListeners"
+                    }
+                ],
+                "urlPathMaps": [],
+                "requestRoutingRules": [
+                    {
+                        "name": "rule1",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "ruleType": "Basic",
+                            "httpListener": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id_3')]"
+                            },
+                            "backendAddressPool": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id_4')]"
+                            },
+                            "backendHttpSettings": {
+                                "id": "[parameters('applicationGateways_myc4ts_appgw_id_5')]"
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/requestRoutingRules"
+                    }
+                ],
+                "probes": [
+                    {
+                        "name": "probe",
+                        "etag": "W/\"877731e7-05c0-4168-b8d5-3519de85aac0\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "Http",
+                            "path": "/",
+                            "interval": 30,
+                            "timeout": 30,
+                            "unhealthyThreshold": 3,
+                            "pickHostNameFromBackendHttpSettings": true,
+                            "minServers": 0,
+                            "match": {
+                                "body": "",
+                                "statusCodes": [
+                                    "200-399"
+                                ]
+                            }
+                        },
+                        "type": "Microsoft.Network/applicationGateways/probes"
+                    }
+                ],
+                "redirectConfigurations": [],
+                "webApplicationFirewallConfiguration": {
+                    "enabled": true,
+                    "firewallMode": "Detection",
+                    "ruleSetType": "OWASP",
+                    "ruleSetVersion": "3.0",
+                    "disabledRuleGroups": [],
+                    "requestBodyCheck": false
+                },
+                "enableHttp2": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworks_myc4ts_name'), parameters('subnets_default_name'))]",
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_myc4ts_appgw_ip_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/publicIPAddresses/myc4ts-appgw-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "sku": {
+                "name": "Basic",
+                "tier": "Regional"
+            },
+            "name": "[parameters('publicIPAddresses_myc4ts_appgw_ip_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "southeastasia",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "ef5e019d-2b3e-4da5-906d-24f1a3d751d9",
+                "ipAddress": "137.116.133.155",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Dynamic",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "jmc-mining",
+                    "fqdn": "jmc-mining.southeastasia.cloudapp.azure.com"
+                },
+                "ipTags": []
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/virtualNetworks/myc4ts'.",
+            "type": "Microsoft.Network/virtualNetworks",
+            "name": "[parameters('virtualNetworks_myc4ts_name')]",
+            "apiVersion": "2018-02-01",
+            "location": "southeastasia",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "e248283f-9d01-4830-96a6-0011a2026cb9",
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.2.0.0/24"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": []
+                },
+                "subnets": [
+                    {
+                        "name": "default",
+                        "etag": "W/\"fed84ecf-1d9b-4e75-849a-eeb2cca52c54\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "addressPrefix": "10.2.0.0/24",
+                            "serviceEndpoints": [
+                                {
+                                    "provisioningState": "Succeeded",
+                                    "service": "Microsoft.AzureCosmosDB",
+                                    "locations": [
+                                        "*"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "virtualNetworkPeerings": [],
+                "enableDdosProtection": false,
+                "enableVmProtection": false
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/MYC4TS/providers/Microsoft.Network/virtualNetworks/myc4ts/subnets/default'.",
+            "type": "Microsoft.Network/virtualNetworks/subnets",
+            "name": "[concat(parameters('virtualNetworks_myc4ts_name'), '/', parameters('subnets_default_name'))]",
+            "apiVersion": "2018-02-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "addressPrefix": "10.2.0.0/24",
+                "serviceEndpoints": [
+                    {
+                        "provisioningState": "Succeeded",
+                        "service": "Microsoft.AzureCosmosDB",
+                        "locations": [
+                            "*"
+                        ]
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_myc4ts_name'))]"
+            ]
+        }
+    ]
+}

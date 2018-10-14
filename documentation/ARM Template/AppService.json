@@ -1,0 +1,629 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_myc4ts_name": {
+            "defaultValue": "myc4ts",
+            "type": "String"
+        },
+        "components_myc4ts_name": {
+            "defaultValue": "myc4ts",
+            "type": "String"
+        },
+        "config_web_name": {
+            "defaultValue": "web",
+            "type": "String"
+        },
+        "serverfarms_myc4ts_hostingPlan_name": {
+            "defaultValue": "myc4ts-hostingPlan",
+            "type": "String"
+        },
+        "deployments_181538464829290_name": {
+            "defaultValue": "181538464829290",
+            "type": "String"
+        },
+        "deployments_171538384091375_name": {
+            "defaultValue": "171538384091375",
+            "type": "String"
+        },
+        "deployments_161538383731351_name": {
+            "defaultValue": "161538383731351",
+            "type": "String"
+        },
+        "deployments_151538382110526_name": {
+            "defaultValue": "151538382110526",
+            "type": "String"
+        },
+        "deployments_141538381344138_name": {
+            "defaultValue": "141538381344138",
+            "type": "String"
+        },
+        "autoscalesettings_Scaling_for_MYC4TS_name": {
+            "defaultValue": "Scaling for MYC4TS",
+            "type": "String"
+        },
+        "alertrules_Failure_Anomalies___myc4ts_name": {
+            "defaultValue": "Failure Anomalies - myc4ts",
+            "type": "String"
+        },
+        "hostNameBindings_myc4ts.azurewebsites.net_name": {
+            "defaultValue": "myc4ts.azurewebsites.net",
+            "type": "String"
+        },
+        "deployments_2249ae5f22434ee68996d38e0af3c6c7_name": {
+            "defaultValue": "2249ae5f22434ee68996d38e0af3c6c7",
+            "type": "String"
+        },
+        "deployments_154fa479efb045d49864cd21345a17a2_name": {
+            "defaultValue": "154fa479efb045d49864cd21345a17a2",
+            "type": "String"
+        },
+        "deployments_476ec7a7c7f546afa3f4b547fce8a528_name": {
+            "defaultValue": "476ec7a7c7f546afa3f4b547fce8a528",
+            "type": "String"
+        },
+        "deployments_d8c572348e43496bafaca791a2b5689c_name": {
+            "defaultValue": "d8c572348e43496bafaca791a2b5689c",
+            "type": "String"
+        },
+        "deployments_cb8293b999c54e0f9cfc9249672f61af_name": {
+            "defaultValue": "cb8293b999c54e0f9cfc9249672f61af",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/microsoft.insights/alertrules/Failure Anomalies - myc4ts'.",
+            "type": "microsoft.insights/alertrules",
+            "name": "[parameters('alertrules_Failure_Anomalies___myc4ts_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "South Central US",
+            "tags": {
+                "hidden-link:/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/microsoft.insights/components/myc4ts": "Resource"
+            },
+            "scale": null,
+            "properties": {
+                "name": "[parameters('alertrules_Failure_Anomalies___myc4ts_name')]",
+                "description": "",
+                "isEnabled": true,
+                "condition": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.ThresholdRuleCondition",
+                    "dataSource": {
+                        "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleMetricDataSource",
+                        "resourceUri": "[resourceId('microsoft.insights/components', parameters('components_myc4ts_name'))]",
+                        "metricNamespace": null,
+                        "metricName": "advanced::A3108E3D-5E26-44CF-B232-783F5E20EF10::ewAiAEgAeQBwAGUAcgBpAG8AbgBBAHAAcABsAGkAYwBhAHQAaQBvAG4AUwBpAGQAIgA6AG4AdQBsAGwALAAiAEgAeQBwAGUAcgBpAG8AbgBTAHUAYgBqAGUAYwB0AFMAaQBkACIAOgBuAHUAbABsACwAIgBIAHkAcABlAHIAaQBvAG4ATwBiAHMAZQByAHYAZQByAFMAaQBkACIAOgBuAHUAbABsACwAIgBDAHUAcwB0AG8AbQBlAHIAQQBjAGMAbwB1AG4AdABJAGQAIgA6ACIAMAAwADAAMAAwADAAMAAwAC0AMAAwADAAMAAtADAAMAAwADAALQAwADAAMAAwAC0AMAAwADAAMAAwADAAMAAwADAAMAAwADAAIgAsACIAQQBwAHAAbABpAGMAYQB0AGkAbwBuAE4AYQBtAGUAIgA6AG4AdQBsAGwALAAiAEEAcABwAGwAaQBjAGEAdABpAG8AbgBJAGQAIgA6AG4AdQBsAGwALAAiAFAAcgBvAGYAaQBsAGUASQBkACIAOgAwACwAIgBXAGkAbgBkAG8AdwBTAGkAegBlAEkAbgBNAGkAbgB1AHQAZQBzACIAOgA2ADAALAAiAE0AZQB0AHIAaQBjAE4AYQBtAGUAIgA6ACIAIgAsACIAVABoAHIAZQBzAGgAbwBsAGQAIgA6ADIALgAwACwAIgBBAGwAZQByAHQAVABlAG0AcABsAGEAdABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAEkAZAAiADoAIgAiACwAIgBSAHUAbABlAE4AYQBtAGUAIgA6ACIAIgAsACIAUgB1AGwAZQBEAGUAcwBjAHIAaQBwAHQAaQBvAG4AIgA6ACIAIgAsACIAUgBlAHMAbwB1AHIAYwBlAEkAZAAiADoAbgB1AGwAbAAsACIAUwB1AGIAcwBjAHIAaQBwAHQAaQBvAG4ASQBkACIAOgBuAHUAbABsACwAIgBBAGcAZwByAGUAZwBhAHQAZQBGAHUAbgBjAHQAaQBvAG4AIgA6ACIAIgAsACIAQwBvAG0AcABhAHIAaQBzAG8AbgBPAHAAZQByAGEAdABvAHIAIgA6ACIAewBcACIAQgBhAHMAZQBsAGkAbgBlAFQAaQBtAGUAcwBwAGEAbgBcACIAOgBcACIAMAAwADoANAAwADoAMAAwAFwAIgAsAFwAIgBJAG4AcwBpAGcAaAB0AHMAUwBlAHIAdgBpAGMAZQBMAGEAZwBcACIAOgBcACIAMAAwADoAMAAwADoAMAAwAFwAIgAsAFwAIgBCAHUAZgBmAGUAcgBUAGkAbQBlAFwAIgA6AFwAIgAwADAAOgAwADEAOgAwADAAXAAiACwAXAAiAEIAbABvAGIAUwB0AG8AcgBhAGcAZQBMAG8AZwBnAGkAbgBnAEUAbgBhAGIAbABlAGQAXAAiADoAZgBhAGwAcwBlACwAXAAiAFUAcwBlAHIAUwB1AHAAcAByAGUAcwBzAGkAbwBuAHMAXAAiADoAbgB1AGwAbAAsAFwAIgBQAHIAbwBmAGkAbABlAEkAZABcACIAOgAwACwAXAAiAEUAbQBhAGkAbABUAHkAcABlAFwAIgA6ADAALABcACIAUgBkAGQARgBhAGkAbAB1AHIAZQBzAFMAcABpAGsAZQBUAGgAcgBlAHMAaABvAGwAZABcACIAOgAzAC4AMAAsAFwAIgBSAGEAdwBQAHIAbwBhAGMAdABpAHYAZQBSAHUAbABlAEMAbwBuAGYAaQBnAFwAIgA6AG4AdQBsAGwAfQAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8AQwB1AHMAdABvAG0AIgA6AGYAYQBsAHMAZQAsACIAQwB1AHMAdABvAG0ARQBtAGEAaQBsAHMARQBuAGMAbwBkAGUAZAAiADoAIgAiACwAIgBFAG4AYQBiAGwAZQBTAGUAbgBkAEUAbQBhAGkAbABUAG8ATwB3AG4AZQByAHMAIgA6AGYAYQBsAHMAZQB9AA=="
+                    },
+                    "operator": "GreaterThan",
+                    "threshold": 2,
+                    "windowSize": "PT1H"
+                },
+                "action": {
+                    "odata.type": "Microsoft.Azure.Management.Insights.Models.RuleEmailAction",
+                    "sendToServiceOwners": true,
+                    "customEmails": []
+                }
+            },
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/microsoft.insights/autoscalesettings/Scaling for MYC4TS'.",
+            "type": "microsoft.insights/autoscalesettings",
+            "name": "[parameters('autoscalesettings_Scaling_for_MYC4TS_name')]",
+            "apiVersion": "2014-04-01",
+            "location": "Southeast Asia",
+            "tags": {},
+            "scale": null,
+            "properties": {
+                "profiles": [
+                    {
+                        "name": "Auto created scale condition",
+                        "capacity": {
+                            "minimum": "1",
+                            "maximum": "10",
+                            "default": "1"
+                        },
+                        "rules": [
+                            {
+                                "metricTrigger": {
+                                    "metricName": "HttpQueueLength",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "GreaterThan",
+                                    "threshold": 50
+                                },
+                                "scaleAction": {
+                                    "direction": "Increase",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            },
+                            {
+                                "metricTrigger": {
+                                    "metricName": "HttpQueueLength",
+                                    "metricNamespace": "",
+                                    "metricResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]",
+                                    "timeGrain": "PT1M",
+                                    "statistic": "Average",
+                                    "timeWindow": "PT5M",
+                                    "timeAggregation": "Average",
+                                    "operator": "LessThanOrEqual",
+                                    "threshold": 0
+                                },
+                                "scaleAction": {
+                                    "direction": "Decrease",
+                                    "type": "ChangeCount",
+                                    "value": "1",
+                                    "cooldown": "PT5M"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "enabled": true,
+                "name": "[parameters('autoscalesettings_Scaling_for_MYC4TS_name')]",
+                "targetResourceUri": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/microsoft.insights/components/myc4ts'.",
+            "type": "microsoft.insights/components",
+            "kind": "web",
+            "name": "[parameters('components_myc4ts_name')]",
+            "apiVersion": "2015-05-01",
+            "location": "southcentralus",
+            "tags": {
+                "hidden-link:/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts": "Resource"
+            },
+            "scale": null,
+            "properties": {
+                "Application_Type": "web",
+                "Flow_Type": null,
+                "Request_Source": "AzureTfsExtensionAzureProject",
+                "HockeyAppId": null,
+                "SamplingPercentage": null
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/Microsoft.Web/serverfarms/myc4ts-hostingPlan'.",
+            "type": "Microsoft.Web/serverfarms",
+            "sku": {
+                "name": "S1",
+                "tier": "Standard",
+                "size": "S1",
+                "family": "S",
+                "capacity": 1
+            },
+            "kind": "linux",
+            "name": "[parameters('serverfarms_myc4ts_hostingPlan_name')]",
+            "apiVersion": "2016-09-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "name": "[parameters('serverfarms_myc4ts_hostingPlan_name')]",
+                "workerTierName": null,
+                "adminSiteName": null,
+                "hostingEnvironmentProfile": null,
+                "perSiteScaling": false,
+                "reserved": true,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts'.",
+            "type": "Microsoft.Web/sites",
+            "kind": "app,linux",
+            "name": "[parameters('sites_myc4ts_name')]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "tags": {
+                "hidden-related:/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/serverfarms/myc4ts-hostingPlan": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "[concat(parameters('sites_myc4ts_name'),'.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "[concat(parameters('sites_myc4ts_name'),'.scm.azurewebsites.net')]",
+                        "sslState": "Disabled",
+                        "virtualIP": null,
+                        "thumbprint": null,
+                        "toUpdate": null,
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]",
+                "reserved": true,
+                "siteConfig": null,
+                "scmSiteAlsoStopped": false,
+                "hostingEnvironmentProfile": null,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "hostNamesDisabled": false,
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "cloningInfo": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', parameters('serverfarms_myc4ts_hostingPlan_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/config/web'.",
+            "type": "Microsoft.Web/sites/config",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('config_web_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "tags": {
+                "hidden-related:/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/serverfarms/myc4ts-hostingPlan": "empty"
+            },
+            "scale": null,
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v4.0",
+                "phpVersion": "",
+                "pythonVersion": "",
+                "nodeVersion": "",
+                "linuxFxVersion": "NODE|9.4",
+                "windowsFxVersion": null,
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "remoteDebuggingVersion": "VS2012",
+                "httpLoggingEnabled": true,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": false,
+                "publishingUsername": "$myc4ts",
+                "publishingPassword": null,
+                "appSettings": null,
+                "azureStorageAccounts": {},
+                "metadata": null,
+                "connectionStrings": null,
+                "machineKey": null,
+                "handlerMappings": null,
+                "documentRoot": null,
+                "scmType": "VSTSRM",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "javaVersion": null,
+                "javaContainer": null,
+                "javaContainerVersion": null,
+                "appCommandLine": "",
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false,
+                        "virtualDirectories": null
+                    }
+                ],
+                "winAuthAdminState": 0,
+                "winAuthTenantState": 0,
+                "customAppPoolIdentityAdminState": false,
+                "customAppPoolIdentityTenantState": false,
+                "runtimeADUser": null,
+                "runtimeADUserPassword": null,
+                "loadBalancing": "LeastRequests",
+                "routingRules": [],
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "limits": null,
+                "autoHealEnabled": false,
+                "autoHealRules": null,
+                "tracingOptions": null,
+                "vnetName": "",
+                "siteAuthEnabled": false,
+                "siteAuthSettings": {
+                    "enabled": null,
+                    "unauthenticatedClientAction": null,
+                    "tokenStoreEnabled": null,
+                    "allowedExternalRedirectUrls": null,
+                    "defaultProvider": null,
+                    "clientId": null,
+                    "clientSecret": null,
+                    "issuer": null,
+                    "allowedAudiences": null,
+                    "additionalLoginParams": null,
+                    "isAadAutoProvisioned": false,
+                    "googleClientId": null,
+                    "googleClientSecret": null,
+                    "googleOAuthScopes": null,
+                    "facebookAppId": null,
+                    "facebookAppSecret": null,
+                    "facebookOAuthScopes": null,
+                    "twitterConsumerKey": null,
+                    "twitterConsumerSecret": null,
+                    "microsoftAccountClientId": null,
+                    "microsoftAccountClientSecret": null,
+                    "microsoftAccountOAuthScopes": null
+                },
+                "cors": null,
+                "push": null,
+                "apiDefinition": null,
+                "autoSwapSlotName": null,
+                "localMySqlEnabled": false,
+                "managedServiceIdentityId": null,
+                "xManagedServiceIdentityId": null,
+                "ipSecurityRestrictions": null,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "ftpsState": "AllAllowed",
+                "reservedInstanceCount": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/181538464829290'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_181538464829290_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_181538464829290_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Microsoft.VisualStudio.Services.TFS",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"e806c9a6b0c88f54ca7a331051d32c452bd652a3\",\"buildId\":\"18\",\"releaseId\":\"18\",\"buildNumber\":\"20181002.1\",\"releaseName\":\"Release-13\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"production\"}",
+                "start_time": "2018-10-02T07:20:31.855353Z",
+                "end_time": "2018-10-02T07:20:31.855353Z",
+                "active": true
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/2249ae5f22434ee68996d38e0af3c6c7'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_2249ae5f22434ee68996d38e0af3c6c7_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_2249ae5f22434ee68996d38e0af3c6c7_name')]",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS_ZIP_DEPLOY",
+                "message": "Created via a push deployment",
+                "start_time": "2018-10-02T07:19:09.969466Z",
+                "end_time": "2018-10-02T07:20:10.761133Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/171538384091375'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_171538384091375_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_171538384091375_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Microsoft.VisualStudio.Services.TFS",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"2bae1b2828cfb33924c81c5af22000a5ae057e3b\",\"buildId\":\"17\",\"releaseId\":\"17\",\"buildNumber\":\"20181001.7\",\"releaseName\":\"Release-12\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"production\"}",
+                "start_time": "2018-10-01T08:54:52.665354Z",
+                "end_time": "2018-10-01T08:54:52.665354Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/154fa479efb045d49864cd21345a17a2'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_154fa479efb045d49864cd21345a17a2_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_154fa479efb045d49864cd21345a17a2_name')]",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS_ZIP_DEPLOY",
+                "message": "Created via a push deployment",
+                "start_time": "2018-10-01T08:54:16.001995Z",
+                "end_time": "2018-10-01T08:54:36.784592Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/161538383731351'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_161538383731351_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_161538383731351_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Microsoft.VisualStudio.Services.TFS",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"4dc5ae482db79ea4c70b565cb53036eed6ac9c28\",\"buildId\":\"16\",\"releaseId\":\"16\",\"buildNumber\":\"20181001.6\",\"releaseName\":\"Release-11\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"production\"}",
+                "start_time": "2018-10-01T08:48:53.064999Z",
+                "end_time": "2018-10-01T08:48:53.064999Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/476ec7a7c7f546afa3f4b547fce8a528'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_476ec7a7c7f546afa3f4b547fce8a528_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_476ec7a7c7f546afa3f4b547fce8a528_name')]",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS_ZIP_DEPLOY",
+                "message": "Created via a push deployment",
+                "start_time": "2018-10-01T08:48:18.058438Z",
+                "end_time": "2018-10-01T08:48:39.4095Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/151538382110526'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_151538382110526_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_151538382110526_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Microsoft.VisualStudio.Services.TFS",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"d05c307ff57668eba3b5b08c95a0bc3e20863387\",\"buildId\":\"15\",\"releaseId\":\"15\",\"buildNumber\":\"20181001.5\",\"releaseName\":\"Release-10\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"production\"}",
+                "start_time": "2018-10-01T08:21:51.768305Z",
+                "end_time": "2018-10-01T08:21:51.768305Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/d8c572348e43496bafaca791a2b5689c'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_d8c572348e43496bafaca791a2b5689c_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_d8c572348e43496bafaca791a2b5689c_name')]",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS_ZIP_DEPLOY",
+                "message": "Created via a push deployment",
+                "start_time": "2018-10-01T08:21:17.566618Z",
+                "end_time": "2018-10-01T08:21:36.792849Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/141538381344138'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_141538381344138_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_141538381344138_name')]",
+                "status": 4,
+                "author_email": "",
+                "author": "Microsoft.VisualStudio.Services.TFS",
+                "deployer": "VSTS",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"3575071cf1c28b08429389417d2c218d70027131\",\"buildId\":\"14\",\"releaseId\":\"14\",\"buildNumber\":\"20181001.4\",\"releaseName\":\"Release-9\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"production\"}",
+                "start_time": "2018-10-01T08:09:06.085133Z",
+                "end_time": "2018-10-01T08:09:06.085133Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/deployments/cb8293b999c54e0f9cfc9249672f61af'.",
+            "type": "Microsoft.Web/sites/deployments",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('deployments_cb8293b999c54e0f9cfc9249672f61af_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "id": "[parameters('deployments_cb8293b999c54e0f9cfc9249672f61af_name')]",
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "VSTS_ZIP_DEPLOY",
+                "message": "Created via a push deployment",
+                "start_time": "2018-10-01T08:08:32.882762Z",
+                "end_time": "2018-10-01T08:08:53.000218Z",
+                "active": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourceGroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/hostNameBindings/myc4ts.azurewebsites.net'.",
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('hostNameBindings_myc4ts.azurewebsites.net_name'))]",
+            "apiVersion": "2016-08-01",
+            "location": "Southeast Asia",
+            "scale": null,
+            "properties": {
+                "siteName": "myc4ts",
+                "domainId": null,
+                "hostNameType": "Verified"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_myc4ts_name'))]"
+            ]
+        }
+    ]
+}
