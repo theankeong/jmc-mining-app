@@ -1,5 +1,5 @@
-//const appInsights=require('applicationinsights');
-//appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
+const appInsights=require('applicationinsights');
+appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
     app = express(),
@@ -9,8 +9,7 @@ var express = require('express'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
      
-   // url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';   
-   url = '';   
+    url = '';   
    
 
     app.use(express.static(__dirname + "/public"));
