@@ -1,5 +1,5 @@
-//const appInsights=require('applicationinsights');
-//appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
+const appInsights=require('applicationinsights');
+appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
     app = express(),
@@ -10,8 +10,8 @@ var express = require('express'),
     ObjectId = require('mongodb').ObjectID,
     
     
-  // url = 'mongodb://localhost:27017/simplemean';
-  url = 'mongodb://localhost:27017/simplemean';
+
+url = 'mongodb://localhost:27017/simplemean';
 console.log('Trying to connect DB');
 app.use(express.static(__dirname + "/public"));
 
