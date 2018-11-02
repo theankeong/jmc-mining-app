@@ -30,9 +30,9 @@ function errorHandler(err, req, res, next) {
 
 async function main(){
     //KV
-    //var kvsvc = require('./KV');
-    //var kvsecrets = await kvsvc.f_getsecrets();
-  //  console.log(kvsecrets);
+    var kvsvc = require('./KV');
+    var kvsecrets = await kvsvc.f_getsecrets();
+    console.log(kvsecrets);
 //    url = kvsecrets.value;
     url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';
     //KV
