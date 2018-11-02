@@ -32,7 +32,7 @@ async function main(){
     //KV
     var kvsvc = require('./KV');
     var kvsecrets = await kvsvc.f_getsecrets();
-    //lsurl = kvsecrets.value;
+    var lsurl = kvsecrets.value;
     url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';
     //KV
     MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
