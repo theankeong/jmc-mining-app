@@ -1,5 +1,5 @@
-const appInsights=require('applicationinsights');
-appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
+//const appInsights=require('applicationinsights');
+//appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
     app = express(),
@@ -8,9 +8,9 @@ var express = require('express'),
     engines = require('consolidate'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
-    
-    
- url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';   
+     
+    url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';   
+   
 
     app.use(express.static(__dirname + "/public"));
 
@@ -29,6 +29,7 @@ function errorHandler(err, req, res, next) {
 
 async function main()
 {
+    //url ="AAA"
     MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
         assert.equal(null, err);
        console.log('Successfully connected to MongoDB.');
