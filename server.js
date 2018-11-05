@@ -9,7 +9,9 @@ var express = require('express'),
     engines = require('consolidate'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
+    KeyVault = require('azure-keyvault'),
     url = 'mongodb://localhost:27017/simplemean';
+
     console.log('Trying to connect DB');
     app.use(express.static(__dirname + "/public"));
     app.use(bodyParser.urlencoded({extended: true}));
@@ -17,8 +19,6 @@ var express = require('express'),
     app.engine('html', engines.nunjucks);
     app.set('view engine', 'html');
     app.set('views', __dirname + '/views');
-
-const KeyVault = require('azure-keyvault');
 
 function errorHandler(err, req, res, next) {
     console.error(err.message);
