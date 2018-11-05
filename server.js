@@ -8,19 +8,14 @@ var express = require('express'),
     engines = require('consolidate'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
-    
-    
-
-url = 'mongodb://localhost:27017/simplemean';
-console.log('Trying to connect DB');
-app.use(express.static(__dirname + "/public"));
-
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-
-app.engine('html', engines.nunjucks);
-app.set('view engine', 'html');
-app.set('views', __dirname + '/views');
+    url = 'mongodb://localhost:27017/simplemean';
+    console.log('Trying to connect DB');
+    app.use(express.static(__dirname + "/public"));
+    app.use(bodyParser.urlencoded({extended: true}));
+    app.use(bodyParser.json());
+    app.engine('html', engines.nunjucks);
+    app.set('view engine', 'html');
+    app.set('views', __dirname + '/views');
 
 function errorHandler(err, req, res, next) {
     console.error(err.message);
@@ -29,12 +24,18 @@ function errorHandler(err, req, res, next) {
 }
 
 async function main(){
-    //KV
     var kvsvc = require('./KV');
-    var kvsecrets = "";
-    // kvsecrets = await kvsvc.f_getsecrets();
-   // url = kvsecrets;
-    url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';
+    var kvsecrets = '';
+    
+    try {
+        kvsecrets = await kvsvc.f_getsecrets();
+        console.log(kvsecrets);
+    } catch (error) {
+        console.log(error);
+    }
+    
+    url = kvsecrets;
+    // url = 'mongodb://myc4ts:6E4ks7zaCBxIy59C39rHuAFlO9SddfJ6CuSuWPlPSEMnuIFmpM3Fh80XHcfQfWdCVCEY2cw7POXpjod3nHM0PA==@myc4ts.documents.azure.com:10255/simplemean?ssl=true&replicaSet=globaldb';
     //KV
     MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
         assert.equal(null, err);
