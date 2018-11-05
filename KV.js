@@ -30,7 +30,7 @@ async function f_getsecrets() {
     var result = await client.getSecret(vaultUrl, vaultName, vaultKey);
         
 
-    return result.value.toString();
+    return result.value;
     //console.log(result.value);
 }
 module.exports.f_getsecrets = f_getsecrets;
