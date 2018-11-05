@@ -18,6 +18,8 @@ var express = require('express'),
     app.set('view engine', 'html');
     app.set('views', __dirname + '/views');
 
+const KeyVault = require('azure-keyvault');
+
 function errorHandler(err, req, res, next) {
     console.error(err.message);
     console.error(err.stack);
