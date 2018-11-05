@@ -1,8 +1,8 @@
 async function f_getsecrets() {
     const KeyVault = require('azure-keyvault');
     const { AuthenticationContext } = require('adal-node')
-    var clientId = 'd90c76b1-4238-46ad-b470-871eb53391fe';
-    var clientSecret = 'ZY3LZWFMamdyA5Au7DI8SS58IYtCpd1QWmx434FvCg4=';
+    var clientId = process.env.clientId;
+    var clientSecret = process.env.clientSecret;
     var result2 = '';
 
     var secretAuthenticator = function (challenge, callback) {
@@ -20,11 +20,11 @@ async function f_getsecrets() {
             });
     };
 
-    const secretUrl = "https://myc4tskv.vault.azure.net/secrets/myc4tscosmosdb/cc9492c5c5b54222be2008cc86c39f14";
+    
     var credentials = new KeyVault.KeyVaultCredentials(secretAuthenticator);
     var client = new KeyVault.KeyVaultClient(credentials);
 
-    var result = await client.getSecret("https://myc4tskv.vault.azure.net", "myc4tscosmosdb", "cc9492c5c5b54222be2008cc86c39f14");
+    var result = await client.getSecret(process.env.secretUrl, process.env.vaultName, process.env.vaultKey);
         
 
     return result.value;
