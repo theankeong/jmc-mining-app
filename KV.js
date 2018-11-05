@@ -2,11 +2,11 @@ async function f_getsecrets() {
     
     const KeyVault = require('azure-keyvault');
     const { AuthenticationContext } = require('adal-node')
-    var clientId = process.env[APPSETTING_clientId];
-    var clientSecret = process.env[APPSETTING_clientSecret] ;
-    var secretUrl = process.env[APPSETTING_secretUrl] ;
-    var vaultName = process.env[APPSETTING_vaultName] ;
-    var vaultKey = process.env[APPSETTING_vaultKey] ;   
+    var clientId = process.env.CLIENT_ID;
+    var clientSecret = process.env.CLIENT_SECRET;
+    var secretUrl = process.env.SECRET_URL ;
+    var vaultName = process.env.VAULT_NAME ;
+    var vaultKey = process.env.VAULT_KEY ;   
            
     var secretAuthenticator = function (challenge, callback) {
 
