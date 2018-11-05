@@ -4,7 +4,7 @@ async function f_getsecrets() {
     const { AuthenticationContext } = require('adal-node')
     const clientId = process.env.CLIENT_ID;
     const clientSecret = process.env.CLIENT_SECRET;
-    const secretUrl = process.env.SECRET_URL ;
+    const vaultUrl = process.env.VAULT_URL ;
     const vaultName = process.env.VAULT_NAME ;
     const vaultKey = process.env.VAULT_KEY ;   
            
@@ -27,7 +27,7 @@ async function f_getsecrets() {
     var client = new KeyVault.KeyVaultClient(credentials);
 
     
-    var result = await client.getSecret(secretUrl, vaultName, vaultKey);
+    var result = await client.getSecret(vaultUrl, vaultName, vaultKey);
         
 
     return result.value.toString();
