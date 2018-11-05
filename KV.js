@@ -1,10 +1,23 @@
 async function f_getsecrets() {
+    
     const KeyVault = require('azure-keyvault');
+    const apiAi = require('apiai');
     const { AuthenticationContext } = require('adal-node')
-    var clientId = process.env.clientId;
-    var clientSecret = process.env.clientSecret;
+    
     var result2 = '';
 
+    
+    module.exports = function(app, server) {
+
+    const clientId = apiAI(Constants.clientId);
+    const clientSecret = apiAI(Constants.clientSecret);
+    const secretUrl = apiAI(Constants.secretUrl);
+    const vaultName = apiAI(Constants.vaultName);
+    const vaultKey = apiAI(Constants.vaultKey);
+}
+    
+    
+    
     var secretAuthenticator = function (challenge, callback) {
 
         var context = new AuthenticationContext(challenge.authorization);
@@ -24,7 +37,8 @@ async function f_getsecrets() {
     var credentials = new KeyVault.KeyVaultCredentials(secretAuthenticator);
     var client = new KeyVault.KeyVaultClient(credentials);
 
-    var result = await client.getSecret(process.env.secretUrl, process.env.vaultName, process.env.vaultKey);
+    
+    var result = await client.getSecret(secretUrl, vaultName, vaultKey);
         
 
     return result.value;
