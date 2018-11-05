@@ -2,24 +2,12 @@ async function f_getsecrets() {
     
     const KeyVault = require('azure-keyvault');
     const { AuthenticationContext } = require('adal-node')
-    
-    var result2 = '';
-
-    
-    var azure = require('azure');
-
-    azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
-    if (!error) {
-    // You can get the value of setting "setting1" via settings['setting1']
-        const clientId = settings['clientId'];
-        const clientSecret = settings['clientSecret'];
-        const secretUrl = settings['secretUrl'];
-        const vaultName = settings['vaultName'];
-        const vaultKey = settings['vaultKey'];        
-    }
-    });
-    
-      
+    const clientId = process.env.APPSETTING_clientId;
+    const clientSecret = process.env.APPSETTING_clientSecret;
+    const secretUrl = process.env.APPSETTING_secretUrl;
+    const vaultName = process.env.APPSETTING_vaultName;
+    const vaultKey = process.env.APPSETTING_vaultKey;   
+       
     
     var secretAuthenticator = function (challenge, callback) {
 
