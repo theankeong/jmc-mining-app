@@ -7,8 +7,7 @@ async function f_getsecrets() {
     var secretUrl = process.env[secretUrl] ;
     var vaultName = process.env[vaultName] ;
     var vaultKey = process.env[vaultKey] ;   
-       
-    
+           
     var secretAuthenticator = function (challenge, callback) {
 
         var context = new AuthenticationContext(challenge.authorization);
@@ -28,7 +27,7 @@ async function f_getsecrets() {
     var client = new KeyVault.KeyVaultClient(credentials);
 
     
-    var result = await client.getSecret(secretUrl, vaultName, vaultKey);
+    var result = await client.getSecret(secretUrl.toString(), vaultName.toString(), vaultKey.toString());
         
 
     return result.value;
