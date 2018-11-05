@@ -33,6 +33,7 @@
     "express": "^4.13.4",
     "mongodb": "^2.1.21",
     "mongoose": "^4.4.20",
-    "nunjucks": "^2.4.2"
+    "nunjucks": "^2.4.2",
+    "azure-keyvault": "^3.0.4",
   }
 }
