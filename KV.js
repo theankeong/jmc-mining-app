@@ -9,11 +9,11 @@ async function f_getsecrets() {
     
     module.exports = function(app, server) {
 
-    const clientId = apiAI(Constants.clientId);
-    const clientSecret = apiAI(Constants.clientSecret);
-    const secretUrl = apiAI(Constants.secretUrl);
-    const vaultName = apiAI(Constants.vaultName);
-    const vaultKey = apiAI(Constants.vaultKey);
+    const clientId = apiAi(Constants.clientId);
+    const clientSecret = apiAi(Constants.clientSecret);
+    const secretUrl = apiAi(Constants.secretUrl);
+    const vaultName = apiAi(Constants.vaultName);
+    const vaultKey = apiAi(Constants.vaultKey);
 }
     
     
