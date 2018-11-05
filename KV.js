@@ -7,16 +7,20 @@ async function f_getsecrets() {
     var result2 = '';
 
     
-    module.exports = function(app, server) {
+    var azure = require('azure');
 
-    const clientId = apiAi(Constants.clientId);
-    const clientSecret = apiAi(Constants.clientSecret);
-    const secretUrl = apiAi(Constants.secretUrl);
-    const vaultName = apiAi(Constants.vaultName);
-    const vaultKey = apiAi(Constants.vaultKey);
-}
+    azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+    if (!error) {
+    // You can get the value of setting "setting1" via settings['setting1']
+        const clientId = settings['clientId'];
+        const clientSecret = settings['clientSecret'];
+        const secretUrl = settings['secretUrl'];
+        const vaultName = settings['vaultName'];
+        const vaultKey = settings['vaultKey'];        
+    }
+    });
     
-    
+      
     
     var secretAuthenticator = function (challenge, callback) {
 
