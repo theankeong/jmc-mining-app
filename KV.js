@@ -1,7 +1,6 @@
 async function f_getsecrets() {
     
     const KeyVault = require('azure-keyvault');
-    const apiAi = require('apiai');
     const { AuthenticationContext } = require('adal-node')
     
     var result2 = '';
