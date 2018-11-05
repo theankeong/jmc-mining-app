@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Simple application to Add, Update, Remove, Search records list using MEAN stack",
   "main": "server.js",
+  "engines" : { "node": ">= 0.6.0" }, 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
