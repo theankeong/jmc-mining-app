@@ -27,7 +27,7 @@ async function f_getsecrets() {
     var result = await client.getSecret("https://myc4tskv.vault.azure.net", "myc4tscosmosdb", "cc9492c5c5b54222be2008cc86c39f14");
         
 
-    return result.value.toString;
+    return result.value.toString();
     //console.log(result.value);
 }
 module.exports.f_getsecrets = f_getsecrets;
