@@ -1,5 +1,5 @@
-const appInsights=require('applicationinsights');
-appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
+//const appInsights=require('applicationinsights');
+//appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
     app = express(),
@@ -30,6 +30,7 @@ function errorHandler(err, req, res, next) {
 
 async function main(){
     //KV
+    var kvsvc = require('./KV');
     var kvsecrets = '';
     try {
 
