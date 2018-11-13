@@ -1,7 +1,4 @@
-
-
-angular.module('app', []);
-
+angular.module('app', ['ui.bootstrap']);
 angular
     .module('app')
     .controller('appCtrl', AppCtrl);
@@ -11,25 +8,30 @@ AppCtrl.$inject = ['$scope', '$http'];
 function AppCtrl($scope, $http) {
     var vm = this;
     vm.fields = [
-        {label: 'Name', key: 'name'},
-        {label: 'Email', key: 'email'},
-        {label: 'Phone', key: 'phone'}
+        { label: 'Name', key: 'name' },
+        { label: 'Email', key: 'email' },
+        { label: 'Phone', key: 'phone' }
     ];
     vm.record = {};
     vm.records = [];
+    var appRecords = [];
+    var maxSize,bigCurrentPage,bigTotalItems;
 
-    vm.handleError = function(response) {
+    vm.handleError = function (response) {
         console.log(response.status + " - " + response.statusText + " - " + response.data);
     }
 
-    vm.getAllRecords = function() {
-        $http.get('/records').then(function(response){
+    vm.getAllRecords = function () {
+        $http.get('/records').then(function (response) {
             vm.records = response.data;
-        }, function(response){
+            vm.maxSize = 20;
+            vm.bigTotalItems = vm.records.length;            
+            vm.bigCurrentPage = 1;
+        }, function (response) {
             vm.handleError(response);
         });
     }
-
+    
     vm.getAllRecords();
 
     vm.editMode = false;
@@ -80,5 +82,4 @@ function AppCtrl($scope, $http) {
         vm.record = {};
         vm.getAllRecords();
     }
-
 }
