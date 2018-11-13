@@ -25,7 +25,7 @@ function AppCtrl($scope, $http) {
         $http.get('/records').then(function (response) {
             vm.records = response.data;
             vm.maxSize = 20;
-            vm.bigTotalItems = vm.records.length;            
+            vm.bigTotalItems = vm.records.count;            
             vm.bigCurrentPage = 1;
         }, function (response) {
             vm.handleError(response);
