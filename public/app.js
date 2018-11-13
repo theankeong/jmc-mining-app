@@ -15,7 +15,7 @@ function AppCtrl($scope, $http) {
     vm.record = {};
     vm.records = [];
     var appRecords = [];
-    var maxSize,bigCurrentPage,bigTotalItems;
+    var maxSize,bigCurrentPage,bigTotalItems,itemsperpage;
 
     vm.handleError = function (response) {
         console.log(response.status + " - " + response.statusText + " - " + response.data);
@@ -24,7 +24,8 @@ function AppCtrl($scope, $http) {
     vm.getAllRecords = function () {
         $http.get('/records').then(function (response) {
             vm.records = response.data;
-            vm.maxSize = 20;
+            vm.maxSize = 10;
+            vm.itemsperpage = 20;
             vm.bigTotalItems = vm.records.length;            
             vm.bigCurrentPage = 1;
         }, function (response) {
