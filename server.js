@@ -97,6 +97,7 @@ async function main(){
     
         app.post('/records', function(req, res, next){
             console.log(req.body);
+            redisClient.del("world");
             records_collection.insert(req.body, function(err, doc) {
                 if(err) throw err;
                 console.log(doc);
@@ -106,6 +107,7 @@ async function main(){
     
         app.delete('/records/:id', function(req, res, next){
             var id = req.params.id;
+            redisClient.del("world");
             console.log("delete " + id);
             records_collection.deleteOne({'_id': new ObjectId(id)}, function(err, results){
                 console.log(results);
