@@ -48,8 +48,9 @@ async function main(){
         console.log(error);
     }
     url = kvconnstring;
+    const REDISURL = process.env.REDISURL ;
 
-    const redisClient = redis.createClient(6380, 'myc4ts.redis.cache.windows.net',{auth_pass:kvredistring , tls: {c4ts: 'myc4ts.redis.cache.windows.net'}});
+    const redisClient = redis.createClient(6380,REDISURL,{auth_pass:kvredistring , tls: {c4ts: REDISURL}});
     // Print redis errors to the console
     redisClient.on('error', (err) => {
     console.log("Error " + err);
