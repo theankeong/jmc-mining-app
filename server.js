@@ -115,6 +115,7 @@ async function main(){
     
         app.put('/records/:id', function(req, res, next){
             var id = req.params.id;
+            redisClient.del("world");
             records_collection.updateOne(
                 {'_id': new ObjectId(id)},
                 { $set: {
