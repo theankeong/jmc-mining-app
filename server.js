@@ -1,5 +1,5 @@
-const appInsights=require('applicationinsights');
-appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
+//const appInsights=require('applicationinsights');
+//appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
     app = express(),
@@ -8,13 +8,11 @@ var express = require('express'),
     engines = require('consolidate'),
     assert = require('assert'),
     ObjectId = require('mongodb').ObjectID,
-    
-    
+    axios = require('axios'),
+    redis = require('redis'),
+    url = 'mongodb://localhost:27017/simplemean';
 
-url = 'mongodb://localhost:27017/simplemean';
-console.log('Trying to connect DB');
 app.use(express.static(__dirname + "/public"));
-
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -29,36 +27,71 @@ function errorHandler(err, req, res, next) {
 }
 
 async function main(){
+
     var kvsvc = require('./KV');
-    var kvsecrets = '';
+    //Get DB ConnString
+    var kvconnstring = '';
     try {
-        kvsecrets = await kvsvc.f_getsecrets();
-        console.log(kvsecrets);
+        kvconnstring = await kvsvc.f_connstring();
+        console.log(kvconnstring);
     } catch (error) {
         console.log(error);
     }
+    url = kvconnstring;
+    
+    //Get Redis String
+    var kvredistring = '';
+    try {
+        kvredistring = await kvsvc.f_redistring();
+        console.log(kvredistring);
+    } catch (error) {
+        console.log(error);
+    }
+    url = kvconnstring;
 
-    url = kvsecrets;
-    
-    
+    const redisClient = redis.createClient(6380, 'myc4ts.redis.cache.windows.net',{auth_pass:kvredistring , tls: {c4ts: 'myc4ts.redis.cache.windows.net'}});
+    // Print redis errors to the console
+    redisClient.on('error', (err) => {
+    console.log("Error " + err);
+        });
     MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
         assert.equal(null, err);
        console.log('Successfully connected to MongoDB.');
-    
         var records_collection = db.collection('records');
-    
         app.get('/records', function(req, res, next) {
-            // console.log("Received get /records request");
+            
+        //try to pull from redis cache first
+        redisClient.get('world',function(err,reply){
+            //if error then throw error larh
+            if(err) throw err;
+             
+            //if rediscache contains the correct KVP returns the JSON to display
+            if(reply){
+                //parse the json
+                const resultJSON = JSON.parse(reply);
+                //return the results
+                return res.status(200).json(resultJSON);
+        }
+        //if redis cache does not have the information
+        else{
+            //retrieve all records from db
             records_collection.find({}).toArray(function(err, records){
                 if(err) throw err;
-    
+                //check records length
                 if(records.length < 1) {
                     console.log("No records found.");
                 }
-    
-                // console.log(records);
-                res.json(records);
+                else{
+                    //create a KVP in redis with 'key','timeout in sec', content
+                    redisClient.setex('world', 3600, JSON.stringify(records));
+                    //return the records
+                    res.json(records);
+                }                
             });
+        }
+    });
+
+
         });
     
         app.post('/records', function(req, res, next){
