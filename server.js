@@ -57,7 +57,7 @@ async function main(){
         });
     MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
         assert.equal(null, err);
-       console.log('Successfully connected to MongoDB.');
+       console.log('Successfully connected to MongoDB');
         var records_collection = db.collection('records');
         app.get('/records', function(req, res, next) {
             
