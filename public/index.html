@@ -10,7 +10,7 @@
     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <title>
-        MYC4TS - Paginate & Redis
+        MEAN - Records
     </title>
 
 </head>
@@ -37,20 +37,19 @@
                     <button ng-click="ctrl.cancelEdit()" class="btn btn-warning">Cancel</button>
                 </td>
             </tr>
-            <tr ng-repeat="record in ctrl.records">
-            <td ng-repeat="field in ctrl.fields">
-                {{record[field.key]}}
-            </td>
-            <td>
-                <span ng-click="ctrl.editRecord(record)" class="glyphicon glyphicon-pencil" aria-hidden="true" style="padding-right: 10px;"></span>
-                <span ng-click="ctrl.deleteRecord(record._id)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </td>
+            <tr ng-repeat="record in ctrl.records.slice(((ctrl.bigCurrentPage-1)*ctrl.maxSize), ((ctrl.bigCurrentPage)*ctrl.maxSize))">
+                <td ng-repeat="field in ctrl.fields">
+                    {{record[field.key]}}
+                </td>
+                <td>
+                    <span ng-click="ctrl.editRecord(record)" class="glyphicon glyphicon-pencil" aria-hidden="true"
+                        style="padding-right: 10px;"></span>
+                    <span ng-click="ctrl.deleteRecord(record._id)" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </td>
             </tr>
         </table>
-        <ul uib-pagination total-items="ctrl.bigTotalItems" ng-model="ctrl.currentPage" ng-change="ctrl.pageChanged()"
-            items-per-page="ctrl.itemsperpage" max-size="ctrl.maxSize" class="pagination-sm" num-pages="numPages"
-            boundary-link-numbers="true" rotate="false"></ul>
-        <pre>Page: {{ctrl.bigCurrentPage}} / {{numPages}}</pre>
+        <ul uib-pagination total-items="ctrl.bigTotalItems" ng-model="ctrl.bigCurrentPage"  items-per-page= "ctrl.itemsperpage" max-size="ctrl.maxSize" class="pagination-sm" num-pages="numPages" boundary-link-numbers="true" rotate="false"></ul>
+    <pre>Page: {{ctrl.bigCurrentPage}} / {{numPages}}</pre>
     </div>
 </body>
 

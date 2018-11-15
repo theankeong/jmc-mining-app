@@ -1,4 +1,4 @@
-const appInsights = require('applicationinsights');
+const appInsights=require('applicationinsights');
 appInsights.setup('00b84d21-5a94-4a3c-a11a-6b5ed2e01024').start();
 
 var express = require('express'),
@@ -13,7 +13,7 @@ var express = require('express'),
     url = 'mongodb://localhost:27017/simplemean';
 
 app.use(express.static(__dirname + "/public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.engine('html', engines.nunjucks);
@@ -23,10 +23,10 @@ app.set('views', __dirname + '/views');
 function errorHandler(err, req, res, next) {
     console.error(err.message);
     console.error(err.stack);
-    res.status(500).render("error_template", { error: err });
+    res.status(500).render("error_template", { error: err});
 }
 
-async function main() {
+async function main(){
 
     var kvsvc = require('./KV');
     //Get DB ConnString
@@ -38,7 +38,7 @@ async function main() {
         console.log(error);
     }
     url = kvconnstring;
-
+    
     //Get Redis String
     var kvredistring = '';
     try {
@@ -48,123 +48,91 @@ async function main() {
         console.log(error);
     }
     url = kvconnstring;
-    const REDISURL = process.env.REDISURL;
-    const redisClient = redis.createClient(6380, REDISURL, { auth_pass: kvredistring, tls: { c4ts: REDISURL } });
+    const REDISURL = process.env.REDISURL ;
+
+    const redisClient = redis.createClient(6380,REDISURL,{auth_pass:kvredistring , tls: {c4ts: REDISURL}});
     // Print redis errors to the console
     redisClient.on('error', (err) => {
-        console.log("Error " + err);
+    console.log("Error " + err);
+        });
+    MongoClient.connect(process.env.MONGODB_URI || url,function(err, db){
+        assert.equal(null, err);
+       console.log('Successfully connected to MongoDB');
+        var records_collection = db.collection('records');
+        app.get('/records', function(req, res, next) {
+            
+        //try to pull from redis cache first
+        redisClient.get('world',function(err,reply){
+            //if error then throw error larh
+            if(err) throw err;
+             
+            //if rediscache contains the correct KVP returns the JSON to display
+            if(reply){
+                //parse the json
+                const resultJSON = JSON.parse(reply);
+                //return the results
+                return res.status(200).json(resultJSON);
+        }
+        //if redis cache does not have the information
+        else{
+            //retrieve all records from db
+            records_collection.find({}).toArray(function(err, records){
+                if(err) throw err;
+                //check records length
+                if(records.length < 1) {
+                    console.log("No records found.");
+                }
+                else{
+                    //create a KVP in redis with 'key','timeout in sec', content
+                    redisClient.setex('world', 3600, JSON.stringify(records));
+                    //return the records
+                    res.json(records);
+                }                
+            });
+        }
     });
 
-    MongoClient.connect(process.env.MONGODB_URI || url, function (err, db) {
-        assert.equal(null, err);
-        console.log('Successfully connected to MongoDB');
-        var records_collection = db.collection('records');
 
-        app.get('/records/:page/:itemsperpage', function (req, res, next) {
-            var perPage = parseInt(req.params.itemsperpage) || 20;
-            var page = req.params.page || 1;
-            var rwp = [];
-            //try to pull from redis cache first
-            redisClient.get(page, function (err, reply) {
-                //if error then throw error larh
-                if (err) throw err;
-
-                //if rediscache contains the correct KVP returns the JSON to display
-                if (reply) {
-                    //parse the json
-                    const resultJSON = JSON.parse(reply);
-                    //return the results
-                    return res.status(200).json(resultJSON);
-                }
-                else {
-                    records_collection.find({}).skip((perPage * page) - perPage).limit(perPage).toArray(function (err, records) {
-                        if (err) throw err;
-
-                        if (records.length < 1) {
-                            console.log("No records found.");
-                        }
-                        else {
-                            records_collection.count(function (err, countTotalItems) {
-                                if (err) throw err;
-                                var lastPage = countTotalItems / perPage;
-                                records.unshift(countTotalItems.toString());
-                                redisClient.setex(page, 3600, JSON.stringify(records));
-                                redisClient.setex("lastPage", 3600, JSON.stringify(lastPage));
-                                res.json(records);
-                            });
-                        }
-
-                    });
-                }
-            });
         });
-
-        app.post('/records', function (req, res, next) {
+    
+        app.post('/records', function(req, res, next){
             console.log(req.body);
-            redisClient.get("lastPage", function (err, reply) {
-                //if error then throw error larh
-                if (err) throw err;
-
-                //if found, delete lastPage from cache
-                if (reply) {
-                    redisClient.del("lastPage");
-                }
-            });
-            records_collection.insert(req.body, function (err, doc) {
-                if (err) throw err;
+            redisClient.del("world");
+            records_collection.insert(req.body, function(err, doc) {
+                if(err) throw err;
                 console.log(doc);
                 res.json(doc);
             });
         });
-
-        app.delete('/records/:id/:currentPage', function (req, res, next) {
+    
+        app.delete('/records/:id', function(req, res, next){
             var id = req.params.id;
-            var currentPage = req.params.currentPage;
+            redisClient.del("world");
             console.log("delete " + id);
-            redisClient.get(currentPage, function (err, reply) {
-                //if error then throw error larh
-                if (err) throw err;
-
-                //if found, delete lastPage from cache
-                if (reply) {
-                    redisClient.del(currentPage);
-                }
-            });
-            records_collection.deleteOne({ '_id': new ObjectId(id) }, function (err, results) {
+            records_collection.deleteOne({'_id': new ObjectId(id)}, function(err, results){
                 console.log(results);
                 res.json(results);
             });
         });
-
-        app.put('/records/:id/:currentPage', function (req, res, next) {
+    
+        app.put('/records/:id', function(req, res, next){
             var id = req.params.id;
-            var currentPage = req.params.currentPage;
-            redisClient.get(currentPage, function (err, reply) {
-                //if error then throw error larh
-                if (err) throw err;
-
-                //if found, delete lastPage from cache
-                if (reply) {
-                    redisClient.del(currentPage);
-                }
-            });
-            console.log("update!");
+            redisClient.del("world");
             records_collection.updateOne(
-                { '_id': new ObjectId(id) },
-                {
-                    $set: {
-                        'name': req.body.name,
-                        'email': req.body.email,
-                        'phone': req.body.phone
+                {'_id': new ObjectId(id)},
+                { $set: {
+                    'name' : req.body.name,
+                    'email': req.body.email,
+                    'phone': req.body.phone
                     }
-                }, function (err, results) {
+                }, function(err, results){
                     console.log(results);
                     res.json(results);
-                });
+            });
         });
-
+    
         app.use(errorHandler);
-        var server = app.listen(process.env.PORT || 3000, function () {
+        var server = app.listen(process.env.PORT || 3000, function() {
             var port = server.address().port;
             console.log('Express server listening on port %s.', port);
         })
