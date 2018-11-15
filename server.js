@@ -148,6 +148,7 @@ async function main() {
                     redisClient.del(currentPage);
                 }
             });
+            console.log("update!");
             records_collection.updateOne(
                 { '_id': new ObjectId(id) },
                 {

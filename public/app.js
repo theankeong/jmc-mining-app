@@ -96,6 +96,6 @@ function AppCtrl($scope, $http) {
     vm.cancelEdit = function() {
         vm.editMode = false;
         vm.record = {};
-        vm.getAllRecords();
+        vm.getRecords(vm.currentPage);
     }
 }
