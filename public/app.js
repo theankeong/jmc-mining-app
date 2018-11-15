@@ -12,28 +12,43 @@ function AppCtrl($scope, $http) {
         { label: 'Email', key: 'email' },
         { label: 'Phone', key: 'phone' }
     ];
+
     vm.record = {};
     vm.records = [];
     var appRecords = [];
-    var maxSize,bigCurrentPage,bigTotalItems,itemsperpage;
+    var maxSize, bigCurrentPage, bigTotalItems, itemsperpage;
+    vm.currentPage = 1;
+    vm.maxSize = 20;
+    vm.itemsperpage = 20;
 
     vm.handleError = function (response) {
         console.log(response.status + " - " + response.statusText + " - " + response.data);
     }
 
-    vm.getAllRecords = function () {
-        $http.get('/records').then(function (response) {
-            vm.records = response.data;
-            vm.maxSize = 20;
-            vm.itemsperpage = 20;
-            vm.bigTotalItems = vm.records.length;            
-            vm.bigCurrentPage = 1;
+    vm.getRecords = function (callback) {
+        vm.currentPage=callback;
+        console.log("The current page is "+vm.currentPage.toString());
+        $http.get('/records/' + vm.currentPage + "/" + vm.maxSize).then(function (response) {
+            console.log("get");
+            vm.totalandrecords = response.data;
+            console.log(vm.totalandrecords);
+            vm.bigTotalItems = vm.totalandrecords.slice(0,1);
+            console.log("The total items are "+vm.bigTotalItems);
+            vm.records=response.data.slice(1);
+            //console.log(vm.records.toString());                        
+
         }, function (response) {
             vm.handleError(response);
         });
     }
-    
-    vm.getAllRecords();
+
+    vm.pageChanged = function () {
+        console.log('Page changed to: ' + vm.currentPage);
+        vm.getRecords(vm.currentPage);
+        
+    };
+
+    vm.getRecords(vm.currentPage);
 
     vm.editMode = false;
     vm.saveRecord = function() {
@@ -48,16 +63,16 @@ function AppCtrl($scope, $http) {
         console.log(vm.record);
         $http.post('/records', vm.record).then(function(response){
             vm.record = {};
-            vm.getAllRecords();
+            vm.getRecords(vm.currentPage);
         }, function(response){
             vm.handleError(response);
         });
     }
 
     vm.updateRecord = function() {
-        $http.put('/records/' + vm.record._id, vm.record).then(function(response){
+        $http.put('/records/' + vm.record._id+'/'+vm.currentPage, vm.record).then(function (response) {
             vm.record = {};
-            vm.getAllRecords();
+            vm.getRecords(vm.currentPage);
             vm.editMode = false;
         }, function(response){
             vm.handleError(response);
@@ -69,11 +84,11 @@ function AppCtrl($scope, $http) {
         vm.editMode = true;
     }
 
-    vm.deleteRecord = function(recordid) {
-        $http.delete('/records/'+recordid).then(function(response){
+    vm.deleteRecord = function (recordid) {
+        $http.delete('/records/' + recordid+'/'+vm.currentPage).then(function (response) {
             console.log("Deleted");
-            vm.getAllRecords();
-        }, function(response){
+            vm.getRecords(vm.currentPage);
+        }, function (response) {
             vm.handleError(response);
         })
     }
@@ -81,6 +96,6 @@ function AppCtrl($scope, $http) {
     vm.cancelEdit = function() {
         vm.editMode = false;
         vm.record = {};
-        vm.getAllRecords();
+        vm.getRecords(vm.currentPage);
     }
 }
