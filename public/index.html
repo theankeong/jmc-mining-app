@@ -37,6 +37,7 @@
                     <button ng-click="ctrl.cancelEdit()" class="btn btn-warning">Cancel</button>
                 </td>
             </tr>
+            <tr ng-repeat="record in ctrl.records">
             <td ng-repeat="field in ctrl.fields">
                 {{record[field.key]}}
             </td>

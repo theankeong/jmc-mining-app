@@ -35,7 +35,7 @@ function AppCtrl($scope, $http) {
             vm.bigTotalItems = vm.totalandrecords.slice(0,1);
             console.log("The total items are "+vm.bigTotalItems);
             vm.records=response.data.slice(1);
-            console.log(vm.records.toString());                        
+            //console.log(vm.records.toString());                        
 
         }, function (response) {
             vm.handleError(response);
