@@ -58,24 +58,24 @@
             "defaultValue": "myc4ts.azurewebsites.net",
             "type": "String"
         },
-        "deployments_881542252885955_name": {
-            "defaultValue": "881542252885955",
+        "deployments_951542259837979_name": {
+            "defaultValue": "951542259837979",
             "type": "String"
         },
-        "deployments_871542250142789_name": {
-            "defaultValue": "871542250142789",
+        "deployments_941542259188995_name": {
+            "defaultValue": "941542259188995",
             "type": "String"
         },
-        "deployments_861542249032145_name": {
-            "defaultValue": "861542249032145",
+        "deployments_931542258087784_name": {
+            "defaultValue": "931542258087784",
             "type": "String"
         },
-        "deployments_851542192451150_name": {
-            "defaultValue": "851542192451150",
+        "deployments_921542257800262_name": {
+            "defaultValue": "921542257800262",
             "type": "String"
         },
-        "deployments_841542191854747_name": {
-            "defaultValue": "841542191854747",
+        "deployments_911542257532625_name": {
+            "defaultValue": "911542257532625",
             "type": "String"
         },
         "deployments_35510853bc354b4ca71877ad24b98ee2_name": {
@@ -98,24 +98,24 @@
             "defaultValue": "476ec7a7c7f546afa3f4b547fce8a528",
             "type": "String"
         },
-        "deployments_b1f2bc1f49074a348190450a28d8c2fd_name": {
-            "defaultValue": "b1f2bc1f49074a348190450a28d8c2fd",
+        "deployments_22743427f41a4e978d196c9622e9298e_name": {
+            "defaultValue": "22743427f41a4e978d196c9622e9298e",
             "type": "String"
         },
-        "deployments_6670477ec0554224b1d265a60b8e8103_name": {
-            "defaultValue": "6670477ec0554224b1d265a60b8e8103",
+        "deployments_1388c0ce2ea746369103dd94273707f6_name": {
+            "defaultValue": "1388c0ce2ea746369103dd94273707f6",
             "type": "String"
         },
-        "deployments_02e5e9356a4e4dc48e317274d246d69e_name": {
-            "defaultValue": "02e5e9356a4e4dc48e317274d246d69e",
+        "deployments_3895dc30415645288de5d5bd2fd7317d_name": {
+            "defaultValue": "3895dc30415645288de5d5bd2fd7317d",
             "type": "String"
         },
-        "deployments_4ba2241587cf48f28cbed7e8f07b0500_name": {
-            "defaultValue": "4ba2241587cf48f28cbed7e8f07b0500",
+        "deployments_2b68384bbe6d4850a2340a15edc6b674_name": {
+            "defaultValue": "2b68384bbe6d4850a2340a15edc6b674",
             "type": "String"
         },
-        "deployments_c49de727b1bd472596fa28d0972dca8d_name": {
-            "defaultValue": "c49de727b1bd472596fa28d0972dca8d",
+        "deployments_b80ea2ea0c5e431384bc0677a7a8149e_name": {
+            "defaultValue": "b80ea2ea0c5e431384bc0677a7a8149e",
             "type": "String"
         },
         "hostNameBindings_myc4ts_testing.azurewebsites.net_name": {
@@ -816,7 +816,7 @@
                 "routingRules": [
                     {
                         "actionHostName": "[concat('myc4ts.azure', parameters('config_web_name_1'),'sites.net')]",
-                        "reroutePercentage": 100,
+                        "reroutePercentage": 0,
                         "changeStep": null,
                         "changeIntervalInMinutes": null,
                         "minReroutePercentage": null,
@@ -829,7 +829,7 @@
                     "rampUpRules": [
                         {
                             "actionHostName": "[concat('myc4ts.azure', parameters('config_web_name_1'),'sites.net')]",
-                            "reroutePercentage": 100,
+                            "reroutePercentage": 0,
                             "changeStep": null,
                             "changeIntervalInMinutes": null,
                             "minReroutePercentage": null,
@@ -888,21 +888,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/881542252885955'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/951542259837979'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_881542252885955_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_951542259837979_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_881542252885955_name')]",
+                "id": "[parameters('deployments_951542259837979_name')]",
                 "status": 4,
                 "author_email": "",
                 "author": "Microsoft.VisualStudio.Services.TFS",
                 "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"2a9b3f0c7f45d61159a34e3e25665fd3386de979\",\"buildId\":\"87\",\"releaseId\":\"88\",\"buildNumber\":\"20181115.3\",\"releaseName\":\"Release-83\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
-                "start_time": "2018-11-15T03:34:47.611952Z",
-                "end_time": "2018-11-15T03:34:47.611952Z",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"973e15b4d303518813874775af706a97371f16e2\",\"buildId\":\"94\",\"releaseId\":\"95\",\"buildNumber\":\"20181115.10\",\"releaseName\":\"Release-90\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
+                "start_time": "2018-11-15T05:30:39.522999Z",
+                "end_time": "2018-11-15T05:30:39.522999Z",
                 "active": true
             },
             "dependsOn": [
@@ -911,21 +911,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/b1f2bc1f49074a348190450a28d8c2fd'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/22743427f41a4e978d196c9622e9298e'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_b1f2bc1f49074a348190450a28d8c2fd_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_22743427f41a4e978d196c9622e9298e_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_b1f2bc1f49074a348190450a28d8c2fd_name')]",
+                "id": "[parameters('deployments_22743427f41a4e978d196c9622e9298e_name')]",
                 "status": 4,
                 "author_email": "N/A",
                 "author": "N/A",
                 "deployer": "VSTS_ZIP_DEPLOY",
                 "message": "Created via a push deployment",
-                "start_time": "2018-11-15T03:34:09.621931Z",
-                "end_time": "2018-11-15T03:34:33.510337Z",
+                "start_time": "2018-11-15T05:30:01.304125Z",
+                "end_time": "2018-11-15T05:30:24.759992Z",
                 "active": false
             },
             "dependsOn": [
@@ -934,21 +934,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/871542250142789'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/941542259188995'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_871542250142789_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_941542259188995_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_871542250142789_name')]",
+                "id": "[parameters('deployments_941542259188995_name')]",
                 "status": 4,
                 "author_email": "",
                 "author": "Microsoft.VisualStudio.Services.TFS",
                 "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"0f014cf6fdc44bd057f8da18e697d1ee707e17f0\",\"buildId\":\"86\",\"releaseId\":\"87\",\"buildNumber\":\"20181115.2\",\"releaseName\":\"Release-82\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
-                "start_time": "2018-11-15T02:49:04.477437Z",
-                "end_time": "2018-11-15T02:49:04.477437Z",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"b5743525044a832b4befa23890906eb7c9a4d807\",\"buildId\":\"93\",\"releaseId\":\"94\",\"buildNumber\":\"20181115.9\",\"releaseName\":\"Release-89\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
+                "start_time": "2018-11-15T05:19:50.292127Z",
+                "end_time": "2018-11-15T05:19:50.292127Z",
                 "active": false
             },
             "dependsOn": [
@@ -957,21 +957,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/6670477ec0554224b1d265a60b8e8103'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/1388c0ce2ea746369103dd94273707f6'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_6670477ec0554224b1d265a60b8e8103_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_1388c0ce2ea746369103dd94273707f6_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_6670477ec0554224b1d265a60b8e8103_name')]",
+                "id": "[parameters('deployments_1388c0ce2ea746369103dd94273707f6_name')]",
                 "status": 4,
                 "author_email": "N/A",
                 "author": "N/A",
                 "deployer": "VSTS_ZIP_DEPLOY",
                 "message": "Created via a push deployment",
-                "start_time": "2018-11-15T02:48:27.352785Z",
-                "end_time": "2018-11-15T02:48:51.057257Z",
+                "start_time": "2018-11-15T05:19:02.823751Z",
+                "end_time": "2018-11-15T05:19:28.811955Z",
                 "active": false
             },
             "dependsOn": [
@@ -980,21 +980,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/861542249032145'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/931542258087784'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_861542249032145_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_931542258087784_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_861542249032145_name')]",
+                "id": "[parameters('deployments_931542258087784_name')]",
                 "status": 4,
                 "author_email": "",
                 "author": "Microsoft.VisualStudio.Services.TFS",
                 "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"16d3d06c7dfc3e68902c25a993acd7451fa55d80\",\"buildId\":\"85\",\"releaseId\":\"86\",\"buildNumber\":\"20181115.1\",\"releaseName\":\"Release-81\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
-                "start_time": "2018-11-15T02:30:34.54827Z",
-                "end_time": "2018-11-15T02:30:34.54827Z",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"818298096a5543a16f26c2b0d187e9a8aefece48\",\"buildId\":\"92\",\"releaseId\":\"93\",\"buildNumber\":\"20181115.8\",\"releaseName\":\"Release-88\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
+                "start_time": "2018-11-15T05:01:30.428481Z",
+                "end_time": "2018-11-15T05:01:30.428481Z",
                 "active": false
             },
             "dependsOn": [
@@ -1003,21 +1003,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/02e5e9356a4e4dc48e317274d246d69e'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/3895dc30415645288de5d5bd2fd7317d'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_02e5e9356a4e4dc48e317274d246d69e_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_3895dc30415645288de5d5bd2fd7317d_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_02e5e9356a4e4dc48e317274d246d69e_name')]",
+                "id": "[parameters('deployments_3895dc30415645288de5d5bd2fd7317d_name')]",
                 "status": 4,
                 "author_email": "N/A",
                 "author": "N/A",
                 "deployer": "VSTS_ZIP_DEPLOY",
                 "message": "Created via a push deployment",
-                "start_time": "2018-11-15T02:29:35.029641Z",
-                "end_time": "2018-11-15T02:30:15.014591Z",
+                "start_time": "2018-11-15T05:00:51.453729Z",
+                "end_time": "2018-11-15T05:01:15.758086Z",
                 "active": false
             },
             "dependsOn": [
@@ -1026,21 +1026,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/851542192451150'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/921542257800262'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_851542192451150_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_921542257800262_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_851542192451150_name')]",
+                "id": "[parameters('deployments_921542257800262_name')]",
                 "status": 4,
                 "author_email": "",
                 "author": "Microsoft.VisualStudio.Services.TFS",
                 "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"7c7f56bfff3b0179a07037f6415b02b7339c9abd\",\"buildId\":\"84\",\"releaseId\":\"85\",\"buildNumber\":\"20181114.7\",\"releaseName\":\"Release-80\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
-                "start_time": "2018-11-14T10:47:32.541349Z",
-                "end_time": "2018-11-14T10:47:32.541349Z",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"0deeb1b82979575bc9af67129f25ed41e0ae9f72\",\"buildId\":\"91\",\"releaseId\":\"92\",\"buildNumber\":\"20181115.7\",\"releaseName\":\"Release-87\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
+                "start_time": "2018-11-15T04:56:41.777227Z",
+                "end_time": "2018-11-15T04:56:41.777227Z",
                 "active": false
             },
             "dependsOn": [
@@ -1049,21 +1049,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/4ba2241587cf48f28cbed7e8f07b0500'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/2b68384bbe6d4850a2340a15edc6b674'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_4ba2241587cf48f28cbed7e8f07b0500_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_2b68384bbe6d4850a2340a15edc6b674_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_4ba2241587cf48f28cbed7e8f07b0500_name')]",
+                "id": "[parameters('deployments_2b68384bbe6d4850a2340a15edc6b674_name')]",
                 "status": 4,
                 "author_email": "N/A",
                 "author": "N/A",
                 "deployer": "VSTS_ZIP_DEPLOY",
                 "message": "Created via a push deployment",
-                "start_time": "2018-11-14T10:46:54.515432Z",
-                "end_time": "2018-11-14T10:47:17.618946Z",
+                "start_time": "2018-11-15T04:55:59.021938Z",
+                "end_time": "2018-11-15T04:56:21.608097Z",
                 "active": false
             },
             "dependsOn": [
@@ -1072,21 +1072,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/841542191854747'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/911542257532625'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_841542191854747_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_911542257532625_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_841542191854747_name')]",
+                "id": "[parameters('deployments_911542257532625_name')]",
                 "status": 4,
                 "author_email": "",
                 "author": "Microsoft.VisualStudio.Services.TFS",
                 "deployer": "VSTS",
-                "message": "{\"type\":\"Deployment\",\"commitId\":\"9cfce5c4427bae8f5a56194f11522170c9330279\",\"buildId\":\"83\",\"releaseId\":\"84\",\"buildNumber\":\"20181114.6\",\"releaseName\":\"Release-79\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
-                "start_time": "2018-11-14T10:37:36.496953Z",
-                "end_time": "2018-11-14T10:37:36.496953Z",
+                "message": "{\"type\":\"Deployment\",\"commitId\":\"7212ecec1ba2f0d8c1d09d6159c08909d5ea5225\",\"buildId\":\"90\",\"releaseId\":\"91\",\"buildNumber\":\"20181115.6\",\"releaseName\":\"Release-86\",\"repoProvider\":\"GitHub\",\"collectionUrl\":\"https://dev.azure.com/myc4ts/\",\"teamProject\":\"d4df8f4d-2e39-4b76-b4ca-7dded1c7603d\",\"slotName\":\"Testing\"}",
+                "start_time": "2018-11-15T04:52:14.450544Z",
+                "end_time": "2018-11-15T04:52:14.450544Z",
                 "active": false
             },
             "dependsOn": [
@@ -1095,21 +1095,21 @@
             ]
         },
         {
-            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/c49de727b1bd472596fa28d0972dca8d'.",
+            "comments": "Generalized from resource: '/subscriptions/9422260a-cbb8-486b-ab29-a7ead9db828f/resourcegroups/myc4ts9dfa/providers/Microsoft.Web/sites/myc4ts/slots/Testing/deployments/b80ea2ea0c5e431384bc0677a7a8149e'.",
             "type": "Microsoft.Web/sites/slots/deployments",
-            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_c49de727b1bd472596fa28d0972dca8d_name'))]",
+            "name": "[concat(parameters('sites_myc4ts_name'), '/', parameters('slots_Testing_name'), '/', parameters('deployments_b80ea2ea0c5e431384bc0677a7a8149e_name'))]",
             "apiVersion": "2016-08-01",
             "location": "Southeast Asia",
             "scale": null,
             "properties": {
-                "id": "[parameters('deployments_c49de727b1bd472596fa28d0972dca8d_name')]",
+                "id": "[parameters('deployments_b80ea2ea0c5e431384bc0677a7a8149e_name')]",
                 "status": 4,
                 "author_email": "N/A",
                 "author": "N/A",
                 "deployer": "VSTS_ZIP_DEPLOY",
                 "message": "Created via a push deployment",
-                "start_time": "2018-11-14T10:36:54.701273Z",
-                "end_time": "2018-11-14T10:37:18.842876Z",
+                "start_time": "2018-11-15T04:51:34.857736Z",
+                "end_time": "2018-11-15T04:51:57.341367Z",
                 "active": false
             },
             "dependsOn": [
